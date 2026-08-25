@@ -1,162 +1,1676 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MINERU - Gestión Minera</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>AMGTM | Asesoramiento Minero y Gestión de Trámites Mineros</title>
+
+  <meta name="description"
+        content="AMGTM - Asesoramiento Minero y Gestión de Trámites Mineros. Seguimiento, gestión documental y acompañamiento personalizado.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{--fondo:#0a0f1a;--card:#111827;--accent:#d4af37;--text:#e5e7eb;--muted:#9ca3af}
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-    body{background:var(--fondo);color:var(--text)}
 
-    header{
-      background:linear-gradient(rgba(10,15,26,.85),rgba(10,15,26,.85)),
-      url('https://images.unsplash.com/photo-1503387762-592deb58ef4e');
-      background-size:cover;background-position:center;
-      text-align:center;padding:120px 20px
+    /* =========================
+       VARIABLES
+    ========================= */
+
+    :root {
+      --negro: #05080d;
+      --negro2: #0a1018;
+      --card: #101823;
+      --card2: #141f2c;
+      --dorado: #d4af37;
+      --dorado2: #f5d76e;
+      --blanco: #f5f5f5;
+      --gris: #a7b0bc;
+      --borde: rgba(212,175,55,.22);
+      --verde: #25d366;
     }
 
-    header h1{font-size:56px;color:var(--accent)}
-    header p{color:var(--muted);margin-top:10px}
+    /* =========================
+       RESET
+    ========================= */
 
-    nav{position:sticky;top:0;background:#020617;padding:15px;text-align:center;border-bottom:1px solid #1f2937;z-index:1000}
-    nav a{color:var(--text);margin:0 18px;text-decoration:none}
-    nav a:hover{color:var(--accent)}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    section{max-width:1100px;margin:60px auto;padding:20px}
-    .titulo{text-align:center;margin-bottom:30px;color:var(--accent)}
+    html {
+      scroll-behavior: smooth;
+    }
 
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
+    body {
+      background: var(--negro);
+      color: var(--blanco);
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-    .card{background:var(--card);padding:20px;border-radius:14px;border:1px solid #1f2937}
-    .card:hover{transform:translateY(-6px);border-color:var(--accent)}
-    .card img{width:100%;border-radius:10px;height:180px;object-fit:cover}
+    a {
+      text-decoration: none;
+    }
 
-    .beneficios{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-    .beneficio{background:var(--card);padding:20px;border-radius:10px;text-align:center}
+    /* =========================
+       BARRA SUPERIOR
+    ========================= */
 
-    .cta{background:#111827;padding:40px;text-align:center;border-radius:12px}
+    .topbar {
+      background: #020408;
+      border-bottom: 1px solid rgba(212,175,55,.15);
+      padding: 8px 20px;
+      text-align: right;
+      color: var(--gris);
+      font-size: 12px;
+    }
 
-    .faq-item,.testimonio{background:var(--card);padding:15px;border-radius:8px;margin-bottom:15px}
-    .faq-item h4{color:var(--accent)}
+    /* =========================
+       NAVBAR
+    ========================= */
 
-    .boton{display:inline-block;margin-top:20px;padding:12px 22px;background:var(--accent);color:#000;text-decoration:none;border-radius:6px;font-weight:600}
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 9999;
 
-    footer{background:#020617;text-align:center;padding:20px;color:var(--muted)}
+      background: rgba(5,8,13,.94);
+      backdrop-filter: blur(15px);
+
+      border-bottom: 1px solid rgba(212,175,55,.15);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 14px 6%;
+    }
+
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: var(--dorado);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #ddd;
+      font-size: 13px;
+      transition: .3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--dorado2);
+    }
+
+    .nav-facebook {
+      background: #1877f2;
+      color: white !important;
+      padding: 9px 15px;
+      border-radius: 7px;
+      font-weight: 600;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 92vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 100px 20px;
+
+      background:
+        linear-gradient(
+          rgba(2,6,12,.72),
+          rgba(2,6,12,.96)
+        ),
+        url("https://images.unsplash.com/photo-1513828583688-c52646db42da");
+
+      background-size: cover;
+      background-position: center;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+
+      width: 600px;
+      height: 600px;
+
+      background: rgba(212,175,55,.09);
+
+      border-radius: 50%;
+
+      filter: blur(80px);
+    }
+
+    .hero-content {
+      max-width: 950px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .mini-logo {
+      display: inline-block;
+
+      border: 1px solid var(--borde);
+      background: rgba(212,175,55,.08);
+
+      color: var(--dorado2);
+
+      padding: 8px 18px;
+      border-radius: 50px;
+
+      font-size: 13px;
+      font-weight: 600;
+
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+
+      font-size: clamp(55px, 9vw, 105px);
+
+      font-weight: 800;
+      letter-spacing: 8px;
+
+      color: var(--dorado);
+
+      line-height: 1;
+
+      text-shadow: 0 0 35px rgba(212,175,55,.22);
+    }
+
+    .hero h2 {
+      margin-top: 20px;
+
+      font-size: clamp(20px, 3vw, 32px);
+
+      font-weight: 600;
+    }
+
+    .hero-title {
+      margin-top: 30px;
+
+      font-family: 'Montserrat', sans-serif;
+
+      font-size: clamp(28px, 5vw, 58px);
+
+      line-height: 1.15;
+
+      font-weight: 800;
+    }
+
+    .hero-title span {
+      color: var(--dorado2);
+    }
+
+    .hero-description {
+      max-width: 750px;
+
+      margin: 25px auto;
+
+      color: #c0c7d0;
+
+      font-size: 16px;
+    }
+
+    /* =========================
+       BOTONES
+    ========================= */
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 15px 25px;
+
+      border-radius: 8px;
+
+      font-weight: 700;
+
+      transition: .3s;
+
+      cursor: pointer;
+    }
+
+    .btn-gold {
+      background: linear-gradient(
+        135deg,
+        var(--dorado),
+        var(--dorado2)
+      );
+
+      color: #080808;
+
+      box-shadow: 0 10px 30px rgba(212,175,55,.18);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(212,175,55,.3);
+    }
+
+    .btn-facebook {
+      background: #1877f2;
+      color: white;
+    }
+
+    .btn-facebook:hover {
+      background: #0d65d8;
+      transform: translateY(-4px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--dorado);
+      color: var(--dorado2);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--dorado);
+      color: #000;
+      transform: translateY(-4px);
+    }
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+      max-width: 1000px;
+
+      margin: -50px auto 80px;
+
+      position: relative;
+      z-index: 5;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      background: rgba(16,24,35,.95);
+
+      border: 1px solid var(--borde);
+
+      border-radius: 15px;
+
+      overflow: hidden;
+    }
+
+    .stat {
+      padding: 25px;
+      text-align: center;
+
+      border-right: 1px solid rgba(255,255,255,.07);
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat strong {
+      display: block;
+
+      font-family: 'Montserrat', sans-serif;
+
+      color: var(--dorado2);
+
+      font-size: 24px;
+    }
+
+    .stat span {
+      color: var(--gris);
+      font-size: 13px;
+    }
+
+    /* =========================
+       SECCIONES
+    ========================= */
+
+    section {
+      max-width: 1150px;
+      margin: 100px auto;
+      padding: 0 22px;
+    }
+
+    .section-tag {
+      text-align: center;
+
+      color: var(--dorado);
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 3px;
+
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      text-align: center;
+
+      font-family: 'Montserrat', sans-serif;
+
+      font-size: clamp(28px, 4vw, 44px);
+
+      font-weight: 800;
+
+      margin-bottom: 15px;
+    }
+
+    .section-title span {
+      color: var(--dorado2);
+    }
+
+    .section-description {
+      max-width: 720px;
+
+      margin: 0 auto 45px;
+
+      text-align: center;
+
+      color: var(--gris);
+
+      font-size: 14px;
+    }
+
+    /* =========================
+       SERVICIOS
+    ========================= */
+
+    .services {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+      gap: 22px;
+    }
+
+    .service {
+      background:
+        linear-gradient(
+          145deg,
+          var(--card),
+          #0b111a
+        );
+
+      border: 1px solid rgba(255,255,255,.06);
+
+      border-radius: 15px;
+
+      padding: 28px;
+
+      transition: .35s;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .service::after {
+      content: "";
+
+      position: absolute;
+
+      width: 100px;
+      height: 100px;
+
+      right: -45px;
+      top: -45px;
+
+      background: rgba(212,175,55,.08);
+
+      border-radius: 50%;
+    }
+
+    .service:hover {
+      transform: translateY(-8px);
+
+      border-color: var(--borde);
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,.35);
+    }
+
+    .service-icon {
+      font-size: 35px;
+      margin-bottom: 17px;
+    }
+
+    .service h3 {
+      color: var(--dorado2);
+      margin-bottom: 9px;
+      font-size: 19px;
+    }
+
+    .service p {
+      color: var(--gris);
+      font-size: 13px;
+    }
+
+    /* =========================
+       IMPULSO
+    ========================= */
+
+    .highlight {
+      background:
+        linear-gradient(
+          120deg,
+          #151b24,
+          #0b1119
+        );
+
+      border: 1px solid var(--borde);
+
+      border-radius: 20px;
+
+      padding: 55px 35px;
+
+      text-align: center;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .highlight::before {
+      content: "⚡";
+
+      position: absolute;
+
+      font-size: 180px;
+
+      opacity: .035;
+
+      right: 5%;
+      top: -35px;
+    }
+
+    .highlight h2 {
+      font-family: 'Montserrat', sans-serif;
+
+      font-size: clamp(28px, 4vw, 46px);
+
+      margin-bottom: 15px;
+    }
+
+    .highlight h2 span {
+      color: var(--dorado2);
+    }
+
+    .highlight p {
+      max-width: 720px;
+
+      margin: auto;
+
+      color: var(--gris);
+    }
+
+    /* =========================
+       PROCESO
+    ========================= */
+
+    .steps {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+      gap: 20px;
+    }
+
+    .step {
+      background: var(--card);
+
+      border: 1px solid rgba(255,255,255,.06);
+
+      padding: 28px;
+
+      border-radius: 14px;
+
+      text-align: center;
+    }
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+
+      margin: 0 auto 17px;
+
+      border-radius: 50%;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background: linear-gradient(
+        135deg,
+        var(--dorado),
+        var(--dorado2)
+      );
+
+      color: #000;
+
+      font-weight: 800;
+    }
+
+    .step h3 {
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: var(--gris);
+      font-size: 13px;
+    }
+
+    /* =========================
+       VENTAJAS
+    ========================= */
+
+    .advantages {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+      gap: 20px;
+    }
+
+    .advantage {
+      padding: 28px;
+
+      background: #0c131d;
+
+      border-left: 3px solid var(--dorado);
+
+      border-radius: 8px;
+    }
+
+    .advantage h3 {
+      color: var(--dorado2);
+      margin-bottom: 8px;
+    }
+
+    .advantage p {
+      color: var(--gris);
+      font-size: 13px;
+    }
+
+    /* =========================
+       FAQ
+    ========================= */
+
+    .faq {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .faq-item {
+      background: var(--card);
+
+      border: 1px solid rgba(255,255,255,.06);
+
+      border-radius: 10px;
+
+      padding: 20px 22px;
+
+      margin-bottom: 12px;
+    }
+
+    .faq-item h3 {
+      color: var(--dorado2);
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      color: var(--gris);
+      font-size: 13px;
+    }
+
+    /* =========================
+       RESEÑAS
+    ========================= */
+
+    .review-box {
+      max-width: 800px;
+
+      margin: auto;
+
+      background:
+        linear-gradient(
+          145deg,
+          var(--card),
+          #0b1119
+        );
+
+      border: 1px solid var(--borde);
+
+      border-radius: 15px;
+
+      padding: 35px;
+
+      text-align: center;
+    }
+
+    .stars {
+      color: var(--dorado2);
+      font-size: 27px;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .review-box p {
+      color: var(--gris);
+      font-size: 14px;
+    }
+
+    .review-form {
+      max-width: 800px;
+
+      margin: 25px auto 0;
+
+      background: var(--card);
+
+      border: 1px solid rgba(255,255,255,.06);
+
+      border-radius: 15px;
+
+      padding: 28px;
+    }
+
+    .review-form h3 {
+      margin-bottom: 18px;
+      color: var(--dorado2);
+    }
+
+    .review-form input,
+    .review-form textarea,
+    .review-form select {
+      width: 100%;
+
+      padding: 13px;
+
+      margin-bottom: 15px;
+
+      background: #060a10;
+
+      color: white;
+
+      border: 1px solid #273344;
+
+      border-radius: 7px;
+
+      outline: none;
+    }
+
+    .review-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* =========================
+       CONTACTO
+    ========================= */
+
+    .contact {
+      background:
+        linear-gradient(
+          135deg,
+          #151b25,
+          #090e15
+        );
+
+      border: 1px solid var(--borde);
+
+      border-radius: 20px;
+
+      padding: 55px 25px;
+
+      text-align: center;
+    }
+
+    .contact-logo {
+      color: var(--dorado);
+
+      font-family: 'Montserrat', sans-serif;
+
+      font-size: 45px;
+
+      font-weight: 800;
+
+      letter-spacing: 5px;
+    }
+
+    .contact p {
+      color: var(--gris);
+      margin: 7px 0;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #020408;
+
+      border-top: 1px solid rgba(212,175,55,.15);
+
+      text-align: center;
+
+      padding: 35px 20px;
+
+      color: var(--gris);
+
+      font-size: 12px;
+    }
+
+    .footer-logo {
+      color: var(--dorado);
+
+      font-family: 'Montserrat', sans-serif;
+
+      font-size: 24px;
+
+      font-weight: 800;
+
+      letter-spacing: 3px;
+
+      margin-bottom: 7px;
+    }
+
+    /* =========================
+       BOTÓN FLOTANTE FACEBOOK
+    ========================= */
+
+    .facebook-float {
+      position: fixed;
+
+      right: 22px;
+      bottom: 22px;
+
+      width: 58px;
+      height: 58px;
+
+      border-radius: 50%;
+
+      background: #1877f2;
+
+      color: white;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      font-size: 27px;
+
+      box-shadow: 0 8px 25px rgba(0,0,0,.4);
+
+      z-index: 99999;
+
+      transition: .3s;
+    }
+
+    .facebook-float:hover {
+      transform: scale(1.1);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width: 800px) {
+
+      nav {
+        padding: 14px 18px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+        margin: -30px 20px 60px;
+      }
+
+      .stat {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,.07);
+      }
+
+      .stat:last-child {
+        border-bottom: none;
+      }
+
+      .hero {
+        min-height: 85vh;
+      }
+
+      .hero h1 {
+        letter-spacing: 5px;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 330px;
+      }
+
+      section {
+        margin: 75px auto;
+      }
+    }
+
   </style>
 </head>
 
+
 <body>
 
-<header>
-  <h1>MINERU</h1>
-  <p style="font-size:20px">Asesoría minera profesional en todo el Perú</p>
 
-  <p style="max-width:700px;margin:20px auto">
-    Evita errores, retrasos y pérdida de dinero. Nosotros nos encargamos de tus trámites mineros de inicio a fin.
-  </p>
+<!-- =========================
+     BARRA SUPERIOR
+========================= -->
 
-  <a class="boton" href="#contacto">Contactar por correo</a>
+<div class="topbar">
+  🇵🇪 Atención y asesoramiento en todo el Perú
+</div>
 
-  <p style="margin-top:20px;font-size:14px">
-    ✔ Respuesta rápida ✔ Atención personalizada ✔ Resultados seguros
-  </p>
-</header>
+
+<!-- =========================
+     NAVBAR
+========================= -->
 
 <nav>
-  <a href="#">Inicio</a>
-  <a href="#servicios">Servicios</a>
-  <a href="#beneficios">Ventajas</a>
-  <a href="#faq">Preguntas</a>
-  <a href="#contacto">Contacto</a>
+
+  <div class="nav-logo">
+    AMGTM
+  </div>
+
+  <div class="nav-links">
+
+    <a href="#inicio">Inicio</a>
+
+    <a href="#servicios">Servicios</a>
+
+    <a href="#proceso">Proceso</a>
+
+    <a href="#preguntas">Preguntas</a>
+
+    <a href="#resenas">Reseñas</a>
+
+    <a href="#contacto">Contacto</a>
+
+    <a
+      class="nav-facebook"
+      href="https://www.facebook.com/share/1Z2NY8Boqm/?mibextid=wwXIfr"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      📘 Facebook
+    </a>
+
+  </div>
+
 </nav>
 
-<section id="beneficios">
-  <h2 class="titulo">¿Por qué elegir MINERU?</h2>
-  <div class="beneficios">
-    <div class="beneficio">✔ Ahorro de tiempo y dinero</div>
-    <div class="beneficio">✔ Evitamos errores en trámites</div>
-    <div class="beneficio">✔ Seguimiento completo</div>
-    <div class="beneficio">✔ Atención personalizada</div>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero" id="inicio">
+
+  <div class="hero-content">
+
+    <div class="mini-logo">
+      ⛏️ SERVICIOS DE ASESORAMIENTO MINERO
+    </div>
+
+    <h1>
+      AMGTM
+    </h1>
+
+    <h2>
+      Asesoramiento Minero y Gestión de Trámites Mineros
+    </h2>
+
+    <div class="hero-title">
+      ⚡ <span>Acelera la gestión</span><br>
+      de tu trámite minero
+    </div>
+
+    <p class="hero-description">
+      Te acompañamos en la gestión documental, seguimiento de expedientes
+      y demás trámites relacionados con tu actividad minera.
+      Atención personalizada y comunicación durante el proceso.
+    </p>
+
+
+    <div class="buttons">
+
+      <a
+        class="btn btn-gold"
+        href="#contacto"
+      >
+        🚀 SOLICITAR ASESORÍA
+      </a>
+
+
+      <a
+        class="btn btn-facebook"
+        href="https://www.facebook.com/share/1Z2NY8Boqm/?mibextid=wwXIfr"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        📘 ESCRÍBENOS POR FACEBOOK
+      </a>
+
+    </div>
+
+
+    <p style="margin-top:25px;color:#9ca3af;font-size:13px;">
+      ✔ Seguimiento &nbsp; • &nbsp;
+      ✔ Gestión documental &nbsp; • &nbsp;
+      ✔ Atención personalizada
+    </p>
+
   </div>
-</section>
+
+</header>
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<div class="stats">
+
+  <div class="stat">
+    <strong>📄</strong>
+    <span>Gestión documental</span>
+  </div>
+
+  <div class="stat">
+    <strong>🔎</strong>
+    <span>Seguimiento de expedientes</span>
+  </div>
+
+  <div class="stat">
+    <strong>🇵🇪</strong>
+    <span>Atención a nivel nacional</span>
+  </div>
+
+</div>
+
+
+<!-- =========================
+     SERVICIOS
+========================= -->
 
 <section id="servicios">
-  <h2 class="titulo">Servicios</h2>
-  <div class="grid">
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1581091215367-59ab6b7c8f06">
-      <h3>Petitorios Mineros</h3>
-      <p>Te ayudamos a obtener tu concesión minera sin errores.</p>
+  <div class="section-tag">
+    LO QUE HACEMOS
+  </div>
+
+  <h2 class="section-title">
+    Nuestros <span>Servicios</span>
+  </h2>
+
+  <p class="section-description">
+    Soluciones de asesoramiento y acompañamiento para ayudarte
+    a gestionar tus trámites mineros de manera ordenada.
+  </p>
+
+
+  <div class="services">
+
+
+    <div class="service">
+
+      <div class="service-icon">⛏️</div>
+
+      <h3>
+        Petitorios Mineros
+      </h3>
+
+      <p>
+        Orientación y acompañamiento en la gestión documental
+        relacionada con petitorios mineros.
+      </p>
+
     </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f">
-      <h3>Expedientes</h3>
-      <p>Seguimiento constante de tu trámite hasta finalizar.</p>
+
+    <div class="service">
+
+      <div class="service-icon">🔎</div>
+
+      <h3>
+        Seguimiento de Expedientes
+      </h3>
+
+      <p>
+        Seguimiento del estado de expedientes y comunicación
+        de las novedades relevantes.
+      </p>
+
     </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f">
-      <h3>Reclamos</h3>
-      <p>Defendemos tus derechos en procesos administrativos.</p>
+
+    <div class="service">
+
+      <div class="service-icon">📄</div>
+
+      <h3>
+        Escritos y Solicitudes
+      </h3>
+
+      <p>
+        Apoyo en la preparación de escritos, solicitudes
+        y documentación administrativa.
+      </p>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-icon">📢</div>
+
+      <h3>
+        Carteles y Publicaciones
+      </h3>
+
+      <p>
+        Orientación y apoyo en los trámites relacionados
+        con carteles y publicaciones que correspondan.
+      </p>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-icon">⚡</div>
+
+      <h3>
+        Impulso Administrativo
+      </h3>
+
+      <p>
+        Revisión del estado del trámite y orientación sobre
+        las acciones administrativas que correspondan.
+      </p>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-icon">🤝</div>
+
+      <h3>
+        Asesoría Personalizada
+      </h3>
+
+      <p>
+        Revisamos tu situación y te orientamos sobre
+        los pasos y documentación que correspondan.
+      </p>
+
     </div>
 
   </div>
+
 </section>
+
+
+<!-- =========================
+     MENSAJE IMPACTANTE
+========================= -->
 
 <section>
-  <div class="cta">
-    <h2>¿Listo para avanzar con tu trámite?</h2>
-    <p>No pierdas tiempo, contáctanos ahora mismo.</p>
-    <a class="boton" href="#contacto">Enviar correo</a>
+
+  <div class="highlight">
+
+    <div class="section-tag">
+      DALE IMPULSO A TU GESTIÓN
+    </div>
+
+    <h2>
+      ¿Tu trámite minero está <span>demorando?</span>
+    </h2>
+
+    <p>
+      Permítenos revisar tu caso y realizar el seguimiento
+      correspondiente. Te mantenemos informado sobre el estado
+      de tu trámite y las novedades del expediente.
+    </p>
+
+
+    <div class="buttons">
+
+      <a
+        class="btn btn-gold"
+        href="#contacto"
+      >
+        ⚡ QUIERO ASESORÍA
+      </a>
+
+      <a
+        class="btn btn-facebook"
+        href="https://www.facebook.com/share/1Z2NY8Boqm/?mibextid=wwXIfr"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        📘 CONTACTAR POR FACEBOOK
+      </a>
+
+    </div>
+
   </div>
+
 </section>
 
-<section id="faq">
-  <h2 class="titulo">Preguntas Frecuentes</h2>
 
-  <div class="faq-item">
-    <h4>¿Cuánto cuesta el servicio?</h4>
-    <p>El costo depende del trámite. Escríbenos y te damos información clara sin compromiso.</p>
+<!-- =========================
+     PROCESO
+========================= -->
+
+<section id="proceso">
+
+  <div class="section-tag">
+    SIMPLE Y CLARO
   </div>
 
-  <div class="faq-item">
-    <h4>¿Trabajan en todo el Perú?</h4>
-    <p>Sí, atendemos clientes a nivel nacional.</p>
+  <h2 class="section-title">
+    ¿Cómo <span>trabajamos?</span>
+  </h2>
+
+  <p class="section-description">
+    Te acompañamos desde la primera consulta hasta el seguimiento
+    del trámite.
+  </p>
+
+
+  <div class="steps">
+
+
+    <div class="step">
+
+      <div class="step-number">
+        1
+      </div>
+
+      <h3>
+        Cuéntanos tu caso
+      </h3>
+
+      <p>
+        Explícanos qué trámite necesitas realizar
+        o qué expediente deseas consultar.
+      </p>
+
+    </div>
+
+
+    <div class="step">
+
+      <div class="step-number">
+        2
+      </div>
+
+      <h3>
+        Evaluamos
+      </h3>
+
+      <p>
+        Revisamos la información disponible y te indicamos
+        cómo podemos ayudarte.
+      </p>
+
+    </div>
+
+
+    <div class="step">
+
+      <div class="step-number">
+        3
+      </div>
+
+      <h3>
+        Gestionamos
+      </h3>
+
+      <p>
+        Te acompañamos en la preparación y gestión
+        de la documentación acordada.
+      </p>
+
+    </div>
+
+
+    <div class="step">
+
+      <div class="step-number">
+        4
+      </div>
+
+      <h3>
+        Hacemos seguimiento
+      </h3>
+
+      <p>
+        Realizamos el seguimiento correspondiente
+        y te comunicamos las novedades.
+      </p>
+
+    </div>
+
   </div>
 
 </section>
+
+
+<!-- =========================
+     VENTAJAS
+========================= -->
 
 <section>
-  <h2 class="titulo">Testimonios</h2>
 
-  <div class="testimonio"><p>"Me ayudaron con todo mi petitorio minero sin errores, muy recomendados."</p><strong>- Juan Pérez</strong></div>
-  <div class="testimonio"><p>"Servicio rápido y confiable, siempre atentos a mi trámite."</p><strong>- Carlos Ramos</strong></div>
-  <div class="testimonio"><p>"No sabía por dónde empezar y ellos resolvieron todo."</p><strong>- Luis Huamán</strong></div>
-  <div class="testimonio"><p>"Excelente asesoría, evité muchos problemas gracias a ellos."</p><strong>- José Quispe</strong></div>
-  <div class="testimonio"><p>"Muy profesionales y claros en todo momento."</p><strong>- Miguel Torres</strong></div>
+  <div class="section-tag">
+    AMGTM
+  </div>
+
+  <h2 class="section-title">
+    ¿Por qué <span>elegirnos?</span>
+  </h2>
+
+
+  <div class="advantages">
+
+
+    <div class="advantage">
+
+      <h3>
+        ⚡ Agilidad
+      </h3>
+
+      <p>
+        Organizamos la gestión y el seguimiento para ayudarte
+        a evitar demoras ocasionadas por errores o falta de información.
+      </p>
+
+    </div>
+
+
+    <div class="advantage">
+
+      <h3>
+        🔎 Seguimiento
+      </h3>
+
+      <p>
+        Te mantenemos informado sobre las novedades
+        relacionadas con el trámite contratado.
+      </p>
+
+    </div>
+
+
+    <div class="advantage">
+
+      <h3>
+        📋 Orden
+      </h3>
+
+      <p>
+        Revisamos la documentación necesaria para que
+        el proceso se encuentre correctamente organizado.
+      </p>
+
+    </div>
+
+
+    <div class="advantage">
+
+      <h3>
+        🤝 Atención
+      </h3>
+
+      <p>
+        Comunicación directa y atención personalizada
+        según las características de cada caso.
+      </p>
+
+    </div>
+
+  </div>
+
 </section>
+
+
+<!-- =========================
+     FAQ
+========================= -->
+
+<section id="preguntas">
+
+  <div class="section-tag">
+    RESOLVEMOS TUS DUDAS
+  </div>
+
+  <h2 class="section-title">
+    Preguntas <span>frecuentes</span>
+  </h2>
+
+
+  <div class="faq">
+
+
+    <div class="faq-item">
+
+      <h3>
+        ¿Cuánto cuesta una asesoría?
+      </h3>
+
+      <p>
+        El costo depende del tipo de trámite y del servicio requerido.
+        Contáctanos para evaluar tu caso.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>
+        ¿Atienden en todo el Perú?
+      </h3>
+
+      <p>
+        Sí. Podemos recibir consultas y coordinar la atención
+        de clientes de diferentes regiones del Perú.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>
+        ¿Pueden hacer seguimiento de mi expediente?
+      </h3>
+
+      <p>
+        Sí. Podemos revisar la información disponible y realizar
+        el seguimiento correspondiente dentro del servicio contratado.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>
+        ¿Pueden garantizar que mi trámite será aprobado?
+      </h3>
+
+      <p>
+        No. AMGTM brinda asesoramiento y acompañamiento.
+        Las decisiones, plazos y resultados dependen de las
+        entidades competentes y de las características de cada expediente.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     RESEÑAS
+========================= -->
+
+<section id="resenas">
+
+  <div class="section-tag">
+    EXPERIENCIAS
+  </div>
+
+  <h2 class="section-title">
+    Reseñas de <span>nuestros clientes</span>
+  </h2>
+
+  <p class="section-description">
+    Si recibiste nuestros servicios, comparte tu experiencia
+    para ayudar a otras personas a conocer AMGTM.
+  </p>
+
+
+  <div class="review-box">
+
+    <div class="stars">
+      ☆☆☆☆☆
+    </div>
+
+    <p>
+      Aún no hay reseñas.
+      <br>
+      <strong style="color:#f5d76e;">
+        ¡Sé el primero en compartir tu experiencia!
+      </strong>
+    </p>
+
+  </div>
+
+
+  <div class="review-form">
+
+    <h3>
+      ⭐ Deja tu reseña
+    </h3>
+
+    <form>
+
+      <input
+        type="text"
+        placeholder="Tu nombre (opcional)"
+      >
+
+      <select>
+
+        <option value="">
+          Selecciona tu calificación
+        </option>
+
+        <option>⭐</option>
+        <option>⭐⭐</option>
+        <option>⭐⭐⭐</option>
+        <option>⭐⭐⭐⭐</option>
+        <option>⭐⭐⭐⭐⭐</option>
+
+      </select>
+
+      <textarea
+        placeholder="Cuéntanos cómo fue tu experiencia..."
+      ></textarea>
+
+      <button
+        type="submit"
+        class="btn btn-gold"
+        style="border:none;"
+      >
+        ENVIAR RESEÑA
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACTO
+========================= -->
 
 <section id="contacto">
-  <h2 class="titulo">Contacto</h2>
 
-  <p style="text-align:center">Correo: jesusvizcarra758@gmail.com</p>
+  <div class="contact">
 
-  <div style="text-align:center">
-    <a class="boton" href="mailto:jesusvizcarra758@gmail.com">
-      Enviar correo
-    </a>
+    <div class="contact-logo">
+      AMGTM
+    </div>
+
+    <h2>
+      ¿Listo para darle impulso a tu trámite?
+    </h2>
+
+    <p>
+      Asesoramiento Minero y Gestión de Trámites Mineros
+    </p>
+
+    <p>
+      📧 jesusvizcarra758@gmail.com
+    </p>
+
+
+    <div class="buttons">
+
+
+      <a
+        class="btn btn-gold"
+        href="mailto:jesusvizcarra758@gmail.com"
+      >
+        📧 ENVIAR CORREO
+      </a>
+
+
+      <a
+        class="btn btn-facebook"
+        href="https://www.facebook.com/share/1Z2NY8Boqm/?mibextid=wwXIfr"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        📘 ESCRÍBENOS POR FACEBOOK
+      </a>
+
+    </div>
+
   </div>
+
 </section>
 
+
+<!-- =========================
+     AVISO
+========================= -->
+
+<section>
+
+  <div class="faq-item">
+
+    <h3 style="color:#d4af37;">
+      ⚠️ Información importante
+    </h3>
+
+    <p>
+      AMGTM brinda servicios de asesoramiento, gestión documental
+      y acompañamiento administrativo. Los plazos, decisiones y
+      resultados de los procedimientos dependen de las entidades
+      competentes y de las características de cada expediente.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
-  <p>© 2026 MINERU</p>
+
+  <div class="footer-logo">
+    AMGTM
+  </div>
+
+  <p>
+    Asesoramiento Minero y Gestión de Trámites Mineros
+  </p>
+
+  <p style="margin-top:10px;">
+    © 2026 AMGTM — Todos los derechos reservados.
+  </p>
+
 </footer>
+
+
+<!-- =========================
+     FACEBOOK FLOTANTE
+========================= -->
+
+<a
+  class="facebook-float"
+  href="https://www.facebook.com/share/1Z2NY8Boqm/?mibextid=wwXIfr"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contactar por Facebook"
+>
+  f
+</a>
+
 
 </body>
 </html>
+```
+
